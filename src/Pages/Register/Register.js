@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import './Login.css'
+import React, { useEffect, useState } from 'react'
+import "./Register.css"
 import gambar1 from '../../Assets/img/Rectangle 62.png'
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import GoogleButton from 'react-google-button';
+import { auth } from "../../firebase"
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { Login } from '../Login/Login';
 
 
-
-export const Login = () => {
+export const Register = () => {
     var axios = require('axios');
     const navigate = useNavigate();
+    // google btn
     const authDefault = auth;
     const provider = new GoogleAuthProvider();
 
+
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-    const [ToRegister, setToRegister] = useState(null)
-    
-    useEffect(() => {
-      setToRegister(0)
-    }, [])
-    
 
     const [alertStatus, setAlertStatus] = useState(false);
+
+    const [ToLogin, setToLogin] = useState(0)
 
 
     const changeEmail = (e) => {
@@ -35,8 +33,6 @@ export const Login = () => {
         setPass(e.target.value);
 
     }
-
-    
 
 
 
@@ -52,15 +48,17 @@ export const Login = () => {
     //     }
     // }
 
-    const handleLoginToAdmin = () => {
+    const handleAdminRegister = () => {
+        
         var data = {
             "email": email,
-            "password": pass
+            "password": pass,
+            "role": "admin"
         };
 
         var config = {
             method: 'post',
-            url: 'https://rent-car-appx.herokuapp.com/admin/auth/login',
+            url: 'https://rent-car-appx.herokuapp.com/admin/auth/register',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -69,9 +67,8 @@ export const Login = () => {
 
         axios(config)
             .then(function (response) {
-                console.log(response.data, "login Success");
-                sessionStorage.setItem("Token Admin", response.data.access_token)
-                navigate(`/home`)
+                console.log(response.data, "Register Success");
+                alert("Register Success!")
             })
             .catch(function (error) {
                 console.log(error);
@@ -90,10 +87,18 @@ export const Login = () => {
         })
     }
 
-    const handleToRegister = () => {
-        navigate(`/`)
+    useEffect(() => {
+        console.log(ToLogin, "ini adalah login value");
 
-        // console.log(ToRegister, "ini adalah value")
+      }, [])
+    const handleToLogin = () => {
+        // setToLogin(1);
+        // console.log(ToLogin, "new Token");
+        // if (ToLogin === 1) {
+        //    return <Login/>
+        // }
+
+        navigate('/login')
     }
 
 
@@ -105,7 +110,7 @@ export const Login = () => {
 
             <div className='field-login'>
                 <img src={gambar1} alt='' className='property-login' />
-                <h2 className='property-login Title'>Welcome, Admin BCR</h2>
+                <h2 className='property-login Title'>Create New Account!</h2>
 
                 {alertStatus ? <div className='alert'>
                     Masukkan username dan password yang benar. Perhatikan penggunaan huruf kapital.
@@ -117,10 +122,10 @@ export const Login = () => {
                 <label className='property-login email-pass'>Password</label>
                 <input type='password' placeholder='6+ karakter' className='input-field property-login' onChange={changePass}></input>
 
-                <button className='btn-login' onClick={handleLoginToAdmin}>Sign in</button>
-                <GoogleButton className='google-btn ' onClick={handleGoogleSign} />
+                <button className='btn-login' onClick={handleAdminRegister}>Sign up</button>
 
-                <button className='btn-to-login' onClick={handleToRegister}>Don't have account? Register Here!</button>
+                <GoogleButton className='google-btn' onClick={handleGoogleSign} />
+                <button className='btn-to-login' onClick={handleToLogin}>Already have account? Login Here!</button>
             </div>
         </div>
     )

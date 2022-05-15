@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logoKotak from '../../Assets/img/Rectangle 63.png'
 import logoHome from '../../Assets/img/fi_home.png'
 import logoTruck from '../../Assets/img/fi_truck.png'
@@ -9,8 +9,19 @@ import chevron from '../../Assets/img/fi_chevron-down.png'
 import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
 
 import './Homepage.css'
+import { useNavigate } from 'react-router-dom'
 
 export const Hompage = () => {
+    const navigate = useNavigate()
+    const [Token, setToken] = useState(sessionStorage.getItem("Token Admin"))
+    useEffect(() => {
+      if (!Token) {
+          navigate(`/`)
+      }
+    
+      
+    }, [])
+    
     return (
         <div className='main-container'>
             <div className='container-dashboard'>

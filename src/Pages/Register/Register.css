@@ -95,12 +95,17 @@
     color: #FFFFFF;
 }
 
-
 .google-btn{
     margin-top: 15px;
     width: 100% !important;
-    height: 36px;
-    border-radius: 2px;
+
+}
+
+.btn-to-login{
+    margin-top: 15px;
     border: none;
+    background-color: inherit;
     cursor: pointer;
+    width: 100% !important;
+
 }

@@ -1,0 +1,39 @@
+
+.container-content {
+    display: flex;
+    flex-direction: column;
+
+    /* background-color: #F1F3FF; */
+}
+
+.txt {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.txt-title {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 150%;
+    color: #000000;
+}
+
+.txt-content {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.img-car {
+    max-width: 100%;
+    margin-top: 32px;
+
+}

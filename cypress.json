@@ -1,0 +1,17 @@
+{
+    "baseUrl" : "http://localhost:3000/",
+    "viewportWidth": 1200,
+    "viewportHeight": 760,
+    "reporter": "cypress-multi-reporters",
+    "projectId": "qrme9s",
+    "reporterOptions": {
+        "reporterEnabled" : "mochawesome",
+        "mochawesomeReporterOptions" : {
+            "reportDir": "cypress/report/mochawesome-report",
+            "quite" : true ,
+            "overwrite" : false ,
+            "html" : false ,
+            "json" :true 
+        }
+    }
+}

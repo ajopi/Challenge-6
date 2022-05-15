@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-05-12T14:11:24.342Z",
+    "end": "2022-05-12T14:11:29.490Z",
+    "duration": 5148,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "157d3e75-6d26-4381-b966-ebfa25ece127",
+      "title": "",
+      "fullFile": "cypress/integration/2-advanced-examples/viewport.spec.js",
+      "file": "cypress/integration/2-advanced-examples/viewport.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "14a563cb-f609-48a5-a222-66024e6da439",
+          "title": "Viewport",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "cy.viewport() - set the viewport size and dimension",
+              "fullTitle": "Viewport cy.viewport() - set the viewport size and dimension",
+              "timedOut": null,
+              "duration": 3430,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// https://on.cypress.io/viewport\ncy.get('#navbar').should('be.visible');\ncy.viewport(320, 480); // the navbar should have collapse since our screen is smaller\ncy.get('#navbar').should('not.be.visible');\ncy.get('.navbar-toggle').should('be.visible').click();\ncy.get('.nav').find('a').should('be.visible'); // lets see what our app looks like on a super large screen\ncy.viewport(2999, 2999); // cy.viewport() accepts a set of preset sizes\n// to easily set the screen to a device's width and height\n// We added a cy.wait() between each viewport change so you can see\n// the change otherwise it is a little too fast to see :)\ncy.viewport('macbook-15');\ncy.wait(200);\ncy.viewport('macbook-13');\ncy.wait(200);\ncy.viewport('macbook-11');\ncy.wait(200);\ncy.viewport('ipad-2');\ncy.wait(200);\ncy.viewport('ipad-mini');\ncy.wait(200);\ncy.viewport('iphone-6+');\ncy.wait(200);\ncy.viewport('iphone-6');\ncy.wait(200);\ncy.viewport('iphone-5');\ncy.wait(200);\ncy.viewport('iphone-4');\ncy.wait(200);\ncy.viewport('iphone-3');\ncy.wait(200); // cy.viewport() accepts an orientation for all presets\n// the default orientation is 'portrait'\ncy.viewport('ipad-2', 'portrait');\ncy.wait(200);\ncy.viewport('iphone-4', 'landscape');\ncy.wait(200); // The viewport will be reset back to the default dimensions\n// in between tests (the  default can be set in cypress.json)",
+              "err": {},
+              "uuid": "68ad8ad3-3c22-4860-8d4c-40443fbba58c",
+              "parentUUID": "14a563cb-f609-48a5-a222-66024e6da439",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "68ad8ad3-3c22-4860-8d4c-40443fbba58c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3430,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/report/mochawesome-report",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
